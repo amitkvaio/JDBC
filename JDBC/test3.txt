@@ -1,0 +1,9 @@
+1|amit|  kumar |24
+2|ajit|gupta|22
+3|niraj|gupta| 25
+4|pande|  gee|26
+5 |lara| technology|28
+6|sony|kumari|29
+7|manid  |kumar|30
+8|akash| sony|31
+9| terename|movie| 20

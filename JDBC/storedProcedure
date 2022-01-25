@@ -1,0 +1,26 @@
+MANAGER15
+----------------------------------------
+create or replace 
+PROCEDURE p7(
+    ARG1 OUT INT,
+    ARG2 OUT VARCHAR,
+    ARG3 OUT INT,
+    ARG4 IN INT)
+AS
+BEGIN
+  SELECT age INTO ARG1 FROM emp WHERE sno = ARG4;
+  SELECT name INTO ARG2 FROM emp WHERE sno = ARG4;
+  SELECT salary INTO ARG3 FROM emp WHERE sno = ARG4;
+END;
+---------------------------------------------------------
+MANAGER17
+---------------
+CREATE OR REPLACE
+PROCEDURE P8(
+    ARG1 INT,
+    ARG2 IN OUT INT)
+AS
+BEGIN
+  UPDATE EMP SET SALARY=SALARY+ARG2 WHERE SNO=ARG1;
+  SELECT salary INTO ARG2 FROM emp WHERE sno = ARG1;
+END;
