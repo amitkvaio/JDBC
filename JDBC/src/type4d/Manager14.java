@@ -3,16 +3,13 @@ package type4d;
 import java.sql.*;
 import java.io.*;
 
-public class Manager14
-{
-	public static void main(String[] args)
-	{
+public class Manager14 {
+	public static void main(String[] args) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		try
-		{
+		try {
 			con = Mutil.getConnection();
-			pstmt = con.prepareStatement("update tab3 set name=?where id=?");
+			pstmt = con.prepareStatement("update tab3 set name=? where id=?");
 			pstmt.setString(1, "abc");
 			pstmt.setInt(2, 501);
 			pstmt.executeUpdate();
@@ -20,11 +17,9 @@ public class Manager14
 			pstmt.setInt(2, 701);
 			pstmt.executeUpdate();
 			System.out.println("done");
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally
-		{
+		} finally {
 			Mutil.closeAll(null, pstmt, con);
 		}
 	}

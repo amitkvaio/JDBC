@@ -9,36 +9,28 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class DbUtil
-{
+public class DbUtil {
 	private static final String driverClass;
 	private static final String url;
 	private static final String username;
 	private static final String password;
-	static
-	{
+	static {
 		Properties pr = new Properties();
 		FileReader in = null;
 
-		try
-		{
+		try {
 			in = new FileReader("constants.properties");
 			pr.load(in);
-		} catch (IOException ex)
-		{
+		} catch (IOException ex) {
 			ex.printStackTrace();
-		} finally
-		{
-			try
-			{
-				if (in != null)
-				{
+		} finally {
+			try {
+				if (in != null) {
 					in.close();
 					in = null;
 				}
 
-			} catch (IOException ex)
-			{
+			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
 
@@ -49,59 +41,45 @@ public class DbUtil
 		password = pr.getProperty("password");
 
 	}
-	static
-	{
-		try
-		{
+	static {
+		try {
 			Class.forName(driverClass);
-		} catch (ClassNotFoundException ex)
-		{
+		} catch (ClassNotFoundException ex) {
 			ex.printStackTrace();
 
 		}
 	}
 
-	public static Connection getConnection() throws SQLException
-	{
+	public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url, username, password);
 
 	}
 
-	public static void closeAll(ResultSet rs, Statement stmt, Connection con)
-	{
-		try
-		{
-			if (rs != null)
-			{
+	public static void closeAll(ResultSet rs, Statement stmt, Connection con) {
+		try {
+			if (rs != null) {
 				rs.close();
 				rs = null;
 			}
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 
-		try
-		{
-			if (stmt != null)
-			{
+		try {
+			if (stmt != null) {
 				stmt.close();
 				rs = null;
 			}
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 
-		try
-		{
-			if (con != null)
-			{
+		try {
+			if (con != null) {
 				con.close();
 				con = null;
 			}
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
 	}

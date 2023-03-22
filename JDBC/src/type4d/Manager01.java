@@ -5,20 +5,18 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class Manager01
-{
-	public static void main(String[] args) throws Exception
-	{
+public class Manager01 {
+	public static void main(String[] args) throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		Connection con =DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","system","amit");
-		
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "system");
+
 		String sql = "create table tab3(id int ,name varchar(20))";
-		
-		Statement stmt =con.createStatement();
-		
-		boolean b1=stmt.execute(sql);
-		
-		System.out.println("b1="+b1);
+
+		Statement stmt = con.createStatement();
+
+		boolean b1 = stmt.execute(sql);
+
+		System.out.println("b1=" + b1);
 		System.out.println("done");
 	}
 }

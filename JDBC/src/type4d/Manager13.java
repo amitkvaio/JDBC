@@ -4,24 +4,18 @@ import java.util.*;
 import java.sql.*;
 import java.io.*;
 
-public class Manager13
-{
-	public static void main(String[] args)
-	{
+public class Manager13 {
+	public static void main(String[] args) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		try
-		{
+		try {
 			con = Mutil.getConnection();
-			pstmt = con
-					.prepareStatement("update tab3 set name='naveen' where id=601");
+			pstmt = con.prepareStatement("update tab3 set name='naveen' where id=601");
 			pstmt.executeQuery();
 			System.out.println("done");
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally
-		{
+		} finally {
 			Mutil.closeAll(null, pstmt, con);
 		}
 	}

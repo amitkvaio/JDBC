@@ -4,14 +4,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Manager06
-{
-	public static void main(String[] args)
-	{
-		Connection con  = null;
+public class Manager06 {
+	public static void main(String[] args) {
+		Connection con = null;
 		Statement stmt = null;
-		try
-		{
+		try {
 			con = Mutil.getConnection();
 			stmt = con.createStatement();
 			String s1 = "insert into tab3 values(7,'tech')";
@@ -19,15 +16,11 @@ public class Manager06
 			stmt.execute(s1);
 			stmt.execute(s2);
 			System.out.println("done");
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			Mutil.closeAll(null, stmt, con);
-			
+
 		}
 	}
 }

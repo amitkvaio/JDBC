@@ -4,15 +4,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Manager02
-{
-	public static void main(String[] args)
-	{
+public class Manager02 {
+	public static void main(String[] args) {
 
 		Connection con = null;
 		Statement stmt = null;
-		try
-		{
+		try {
 			con = DbUtil.getConnection();
 			stmt = con.createStatement();
 			StringBuffer sb = new StringBuffer();
@@ -26,11 +23,9 @@ public class Manager02
 			stmt.execute(sb.toString());
 			System.out.println(sb);
 			System.out.println("Stored procedure is created successfully!!");
-		} catch (SQLException ex)
-		{
+		} catch (SQLException ex) {
 			ex.printStackTrace();
-		} finally
-		{
+		} finally {
 			DbUtil.closeAll(null, stmt, con);
 		}
 
@@ -38,12 +33,14 @@ public class Manager02
 
 }
 /*
-
-stored procedure is used to store the compiled multiple sql queries.
-
-To call the stored procedures and functions, CallableStatement interface is used.
-
-We can have business logic on the database by the use of stored procedures and 
-functions that will make the performance better because these are pre compiled
-
-*/
+ * 
+ * stored procedure is used to store the compiled multiple sql queries.
+ * 
+ * To call the stored procedures and functions, CallableStatement interface is
+ * used.
+ * 
+ * We can have business logic on the database by the use of stored procedures
+ * and functions that will make the performance better because these are pre
+ * compiled
+ * 
+ */

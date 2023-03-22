@@ -8,68 +8,49 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class Manager03
-{
-	 static String driverClass;
-	 static  String url;
-	 static String username;
-	 static String password;
-	
-	
-	public static void main(String[] args)
-	{
+public class Manager03 {
+	static String driverClass;
+	static String url;
+	static String username;
+	static String password;
+
+	public static void main(String[] args) {
 		Properties pr = new Properties();
 		FileReader fr = null;
-		try
-		{
+		try {
 			fr = new FileReader("constants.properties");
 			pr.load(fr);
-		} 
-		catch (IOException e)
-		{
+		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
-			try
-			{
-				if(fr!=null)
-				{
+		} finally {
+			try {
+				if (fr != null) {
 					fr.close();
-					fr=null;
+					fr = null;
 				}
-			} 
-			catch (IOException e2)
-			{
+			} catch (IOException e2) {
 				e2.printStackTrace();
 			}
 		}
 		driverClass = pr.getProperty("driverClass");
 		url = pr.getProperty("url");
-		username=pr.getProperty("username");
-		password=pr.getProperty("password");
-		
-		
-		try
-		{
+		username = pr.getProperty("username");
+		password = pr.getProperty("password");
+
+		try {
 			Class.forName(driverClass);
-		} 
-		catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		Connection con = null;
 		Statement stmt = null;
-		try
-		{
-			con = DriverManager.getConnection(url,username,password);
+		try {
+			con = DriverManager.getConnection(url, username, password);
 			stmt = con.createStatement();
 			String sql = "insert into tab3 values(3,'kakesh')";
-			stmt.execute(sql);
+			stmt.executeUpdate(sql);
 			System.out.println("done");
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
